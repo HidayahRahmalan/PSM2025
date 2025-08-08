@@ -1,0 +1,21 @@
+{
+    "name": "asus/fyp",
+    "autoload": {
+        "psr-4": {
+            "Asus\\Fyp\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^4.1",
+        "rubix/ml": "^2.5",
+        "openai-php/client": "^0.10.3",
+        "symfony/http-client": "^7.2",
+        "nyholm/psr7": "^1.8",
+        "dompdf/dompdf": "^3.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

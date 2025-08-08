@@ -1,0 +1,46 @@
+{
+    "file_path": "C:\\xampp\\htdocs\\fyp\/uploads\/upload_67dfb0feeca230.09359349.xls",
+    "temp_file_path": "C:\\xampp\\htdocs\\fyp\/uploads\/cleaned_67dfb0ff7fa098.49285951.xls",
+    "headers": [
+        "Order ID",
+        "Product Name",
+        "Return Request Date",
+        "Refund Amount",
+        "Reason for Return",
+        "Return Status"
+    ],
+    "extracted_data": [
+        [
+            "1002",
+            "Wireless Earbuds",
+            "2024-03-05",
+            20,
+            "Defective item",
+            "Approved"
+        ],
+        [
+            "1002",
+            "Wireless Earbuds",
+            "2024-03-05",
+            20,
+            "Defective item",
+            "Approved"
+        ],
+        [
+            "1004",
+            "Smartwatch",
+            "2024-03-06",
+            50,
+            "Incorrect product",
+            "Pending"
+        ],
+        [
+            1005,
+            "Bluetooth Speaker",
+            "2024-03-07",
+            30,
+            "Damaged",
+            "Completed"
+        ]
+    ]
+}
