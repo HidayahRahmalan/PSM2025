@@ -518,8 +518,10 @@ function showExportDialog(filename) {
         cancelButtonText: "Close",
         confirmButtonColor: "#ff9800",
         cancelButtonColor: "#aaa",
-        background: localStorage.getItem("theme") === "dark" ? "#333" : "#fff",
-        color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
+        //background: localStorage.getItem("theme") === "dark" ? "#333" : "#fff",
+        //color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
+        background: "#fff",
+        color: "#000",
         width: "400px",
         padding: "16px",
         customClass: {
@@ -2161,15 +2163,17 @@ function applyResolutionsInaccuracies(resolvedData) {
 
 
 function showAlert(icon, title, text) {
-    const theme = localStorage.getItem("theme") || "dark"; // Get current theme
+    //const theme = localStorage.getItem("theme") || "dark"; // Get current theme
 
     Swal.fire({
         icon: icon,
         title: title,
         text: text,
         confirmButtonColor: "#ff9800",
-        background: theme === "dark" ? "#333" : "#fff",  // Match dark/light mode
-        color: theme === "dark" ? "#fff" : "#000",
+        //background: theme === "dark" ? "#333" : "#fff",  // Match dark/light mode
+        //color: theme === "dark" ? "#fff" : "#000",
+        background: "#fff",  // Match dark/light mode
+        color: "#000",
         width: "380px",
         padding: "12px",
         customClass: {

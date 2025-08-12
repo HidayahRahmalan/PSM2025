@@ -452,11 +452,33 @@ if ($result->num_rows == 1) {
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-            const savedTheme = localStorage.getItem("theme") || "dark"; // Default to dark mode
-            setTheme(savedTheme);
+            //const savedTheme = localStorage.getItem("theme") || "dark"; // Default to dark mode
+            //setTheme(savedTheme);
+            setTheme();
         });
 
-        function setTheme(theme) {
+        function setTheme() {
+            const body = document.body;
+            const container = document.querySelector(".container"); // Select the form
+            const errorBoxes = document.querySelectorAll(".error-box"); // Select all error boxes
+            const allTextElements = document.querySelectorAll(
+                "body, .password-container, .container"
+            );
+
+            // Light Mode - Keep background white and add border to form
+            body.style.backgroundColor = "rgb(245, 245, 245)";
+            container.style.backgroundColor = "white";
+            container.style.color = "black";
+            container.style.border = "1px solid rgb(200, 200, 200)"; // Light border
+            container.style.boxShadow = "0px 2px 10px rgba(0, 0, 0, 0.1)"; // Soft shadow
+
+            allTextElements.forEach(element => {
+                element.style.color = "black";
+            }); 
+        }
+
+
+        /*function setTheme(theme) {
             const body = document.body;
             const container = document.querySelector(".container"); // Select the form
             const errorBoxes = document.querySelectorAll(".error-box"); // Select all error boxes
@@ -494,7 +516,7 @@ if ($result->num_rows == 1) {
                     element.style.color = "white";
                 });
             }
-        }
+        }*/
 
 
 </script>

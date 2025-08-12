@@ -305,8 +305,10 @@ $UserRole = $_SESSION['URole'];
             cancelButtonText: 'Cancel',
             confirmButtonColor: '#ff9800',
             cancelButtonColor: '#6c757d',
-            background: theme === "dark" ? "#333" : "#fff",
-            color: theme === "dark" ? "#fff" : "#000",
+            //background: theme === "dark" ? "#333" : "#fff",
+            //color: theme === "dark" ? "#fff" : "#000",
+            background: "#fff", // Light background
+            color: "#000", // Black text
             width: "380px",
             padding: "12px"
         }).then((result) => {

@@ -716,8 +716,10 @@ while ($row = $result->fetch_assoc()) {
             html: html,
             width: "80%",
             confirmButtonColor: "#ff9800",
-            background: localStorage.getItem("theme") === "dark" ? "#333" : "#fff",
-            color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
+            //background: localStorage.getItem("theme") === "dark" ? "#333" : "#fff",
+            //color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
+            background: "#fff",
+            color: "#000",
             customClass: {
                 popup: "custom-alert"
             }
@@ -856,11 +858,80 @@ while ($row = $result->fetch_assoc()) {
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-        const savedTheme = localStorage.getItem("theme") || "dark"; // Default to dark mode
-        setTheme(savedTheme);
+        //const savedTheme = localStorage.getItem("theme") || "dark"; // Default to dark mode
+        //setTheme(savedTheme);
+        setTheme();
     });
 
-    function setTheme(theme) {
+    function setTheme() {
+        const body = document.body;
+        const uploadContainer = document.querySelector(".upload-container");
+        const uploadTextElements = document.querySelectorAll(".upload-container .text"); // Select all text elements inside upload container
+        const sidebar = document.getElementById('sidebar');
+        const headerBar = document.querySelector('.header-bar');
+        const searchBar = document.getElementById('sidebarSearch'); 
+        const dropdownBtn = document.querySelector('.dropdown-btn'); 
+        const dropdownContent = document.querySelector('.dropdown-content'); // Dropdown menu
+        const dropdownItems = document.querySelectorAll('.dropdown-content a'); // Dropdown items
+        const allTextElements = document.querySelectorAll(
+            "body, .header-bar, .header-bar .title, .sidebar, .dropdown-content a, .dropdown-content, .modal-content, .modal-header, .modal-footer, .modal-body, .hamburger-icon"
+        );
+
+        // Light Mode
+        body.style.backgroundColor = "white";
+        sidebar.style.backgroundColor = "#f5f5f5";
+        headerBar.style.backgroundColor = "white";
+        dropdownContent.style.backgroundColor = "white"; 
+        dropdownContent.style.border = "1px solid rgb(183, 183, 181)";
+
+        searchBar.style.backgroundColor = "white";
+        searchBar.style.color = "black";
+        searchBar.style.border = "1px solid #ccc";
+
+        uploadContainer.style.background = "white";
+        uploadContainer.style.color = "black";
+        uploadContainer.style.border = "2px dashed #ddd";
+
+        uploadTextElements.forEach(text => {
+            text.style.color = "black";
+        });
+
+        // all text is black in light mode
+        allTextElements.forEach(element => {
+            element.style.color = "rgb(0, 0, 0)";
+        });
+
+        //Dropdown Button Light Mode
+        dropdownBtn.style.color = "#ff9800"; // Keep orange text
+        dropdownBtn.style.backgroundColor = "transparent"; // Default background
+        dropdownBtn.onmouseover = function() {
+            this.style.backgroundColor = "rgb(220, 220, 220)"; // Light hover effect
+        };
+        dropdownBtn.onmouseleave = function() {
+            this.style.backgroundColor = "transparent";
+        };
+
+        //Dropdown Items Light Mode
+        dropdownItems.forEach(item => {
+            item.style.color = "black";
+            item.onmouseover = function() {
+                this.style.backgroundColor = "rgb(230, 230, 230)"; // Light hover effect
+            };
+            item.onmouseleave = function() {
+                this.style.backgroundColor = "transparent";
+            };
+        });
+
+        document.querySelectorAll(".modal-content, .modal-header, .modal-footer, .modal-body").forEach(modal => {
+            modal.style.backgroundColor = "white"; 
+            modal.style.color = "black"; 
+            modal.style.border = "1px solid rgb(200, 200, 200)"; 
+        });
+
+        document.querySelector("#loading-text").style.color = "black";
+    }
+
+    /*function setTheme(theme) {
         const body = document.body;
         const uploadContainer = document.querySelector(".upload-container");
         const uploadTextElements = document.querySelectorAll(".upload-container .text"); // Select all text elements inside upload container
@@ -982,11 +1053,11 @@ while ($row = $result->fetch_assoc()) {
         }
 
         localStorage.setItem("theme", theme); // Save user preference
-    }
+    }*/
 
-    function toggleTheme(theme) {
+    /*function toggleTheme(theme) {
         setTheme(theme);
-    }
+    }*/
 
     const dropArea = document.getElementById('drop-area');
     const fileInput = document.getElementById('file-input');
@@ -1270,7 +1341,7 @@ while ($row = $result->fetch_assoc()) {
                         };
 
                         document.querySelector('.delete-btn').onclick = () => {
-                            const theme = localStorage.getItem("theme") || "dark";
+                            //const theme = localStorage.getItem("theme") || "dark";
 
                             Swal.fire({
                                 icon: 'warning',
@@ -1281,8 +1352,10 @@ while ($row = $result->fetch_assoc()) {
                                 cancelButtonColor: '#aaa',
                                 confirmButtonText: 'Delete',
                                 cancelButtonText: 'Cancel',
-                                background: theme === "dark" ? "#333" : "#fff",
-                                color: theme === "dark" ? "#fff" : "#000",
+                                //background: theme === "dark" ? "#333" : "#fff",
+                                //color: theme === "dark" ? "#fff" : "#000",
+                                background: "#fff",
+                                color: "#000",
                                 width: "380px",
                                 padding: "12px",
                                 customClass: {
@@ -1447,15 +1520,17 @@ while ($row = $result->fetch_assoc()) {
     }
 
     function showAlert(icon, title, text,callback) {
-        const theme = localStorage.getItem("theme") || "dark"; // Get current theme
+        //const theme = localStorage.getItem("theme") || "dark"; // Get current theme
 
         Swal.fire({
             icon: icon,
             title: title,
             text: text,
             confirmButtonColor: "#ff9800",
-            background: theme === "dark" ? "#333" : "#fff",  // Match dark/light mode
-            color: theme === "dark" ? "#fff" : "#000",
+            //background: theme === "dark" ? "#333" : "#fff",  // Match dark/light mode
+            //color: theme === "dark" ? "#fff" : "#000",
+            background: "#fff",  
+            color: "#000",
             width: "380px",
             padding: "12px",
             customClass: {
@@ -1473,7 +1548,8 @@ while ($row = $result->fetch_assoc()) {
     }
 
     function confirmLogout() {
-        const theme = localStorage.getItem("theme") || "dark";
+        //const theme = localStorage.getItem("theme") || "dark";
+        
         Swal.fire({
             title: 'Are you sure?',
             text: 'Do you want to log out?',
@@ -1482,8 +1558,10 @@ while ($row = $result->fetch_assoc()) {
             confirmButtonColor: '#ff9800',
             cancelButtonColor: 'rgba(0, 0, 0, 0.33)',
             confirmButtonText: 'Logout',
-            background: theme === "dark" ? "#333" : "#fff",
-            color: theme === "dark" ? "#fff" : "#000"
+            //background: theme === "dark" ? "#333" : "#fff",
+            //color: theme === "dark" ? "#fff" : "#000"
+            background: "#fff",
+            color: "#000"
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = 'logout.php';
@@ -1491,7 +1569,7 @@ while ($row = $result->fetch_assoc()) {
         });
     }
 
-    function openThemeSelector() {
+    /*function openThemeSelector() {
         const theme = localStorage.getItem("theme") || "dark";
 
         Swal.fire({
@@ -1528,13 +1606,13 @@ while ($row = $result->fetch_assoc()) {
                 });
             }
         });
-    }
+    }*/
 
 
-    function setThemeAndClose(theme) {
-        setTheme(theme);
+    /*function setThemeAndClose(theme) {
+        setTheme();
         Swal.close();
-    }
+    }*/
 
 
 </script>
