@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 },
                                 backdrop: "url(\'loginBackgroundPic2.png\') center center / cover no-repeat" 
                             }).then(() => {
-                                window.location.href = "login.php";
+                                window.location.href = "index.php";
                             });
                         });
                     </script>';
@@ -363,7 +363,8 @@ $conn->close();
         </div>
 
             <div class="login-container">
-                <p>Already have an account? <a href="login.php" class="login-link">Log in</a></p>
+                <!--<p>Already have an account? <a href="login.php" class="login-link">Log in</a></p>-->
+                <p>Already have an account? <a href="index.php" class="login-link">Log in</a></p>
             </div>
         </div>
 

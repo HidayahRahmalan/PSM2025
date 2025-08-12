@@ -33,7 +33,8 @@ if ($UserID) {
             session_destroy();
 
             // Redirect to login page
-            header("Location: login.php?Error=session_timeout");
+            //header("Location: login.php?Error=session_timeout");
+            header("Location: index.php?Error=session_timeout");
             exit();
         } else {
             // Update last activity if still within the timeout duration

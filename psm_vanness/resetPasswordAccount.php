@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         },
                         backdrop: "url(\'loginBackgroundPic2.png\') center center / cover no-repeat" 
                     }).then(() => {
-                        window.location.href = "login.php";
+                        window.location.href = "index.php";
                     });
                 });
             </script>';

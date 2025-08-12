@@ -200,7 +200,8 @@ $conn->close();
         </div>
     </div>
         <div class="reset-form">
-            <a href="login.php" class="back-arrow">←</a>
+            <!--<a href="login.php" class="back-arrow">←</a>-->
+            <a href="index.php" class="back-arrow">←</a>
             <div class="reset-title">Find Account</div> 
             <form action="findResetPasswordAccount.php" method="POST">
 
