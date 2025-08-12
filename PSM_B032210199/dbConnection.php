@@ -4,6 +4,7 @@ $servername = "localhost";
 $username = "vanness";
 $password = "password";
 //$dbname = "dqms"; 
+//$dbname = "dqms"; 
 $dbname = "psm_dqms"; 
 
 // Create connection
