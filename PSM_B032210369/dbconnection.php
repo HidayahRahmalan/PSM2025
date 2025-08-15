@@ -1,0 +1,16 @@
+<?php
+$servername = "localhost";
+$username = "B032210369";
+$password = "hygieiahub";
+$dbname = "PSM_B032210369";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} /*else {
+    echo "Database connection successful!";
+} */
+?>
