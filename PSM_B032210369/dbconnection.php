@@ -1,6 +1,6 @@
 <?php
 $servername = "localhost";
-$username = "B032210369";
+$username = "b032210369";
 $password = "hygieiahub";
 $dbname = "psm_b032210369";
 
