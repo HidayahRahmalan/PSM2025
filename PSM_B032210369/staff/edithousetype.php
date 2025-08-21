@@ -150,12 +150,12 @@ if ($result->num_rows > 0) {
                     </li>
 
 
-                    <!-- Maintenance -->
+                    <!-- Maintenance 
                     <li class="nav-item">
                         <a class="nav-link" href="maintenance.php">
                             <span class="menu-title">Maintenance</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
 
