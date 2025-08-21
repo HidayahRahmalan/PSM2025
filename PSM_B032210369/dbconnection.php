@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "B032210369";
 $password = "hygieiahub";
 $dbname = "psm_b032210369";
