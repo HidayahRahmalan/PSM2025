@@ -236,12 +236,12 @@ while ($row = $result->fetch_assoc()) {
                         </div>
                     </li>
 
-                    <!-- Maintenance -->
+                    <!-- Maintenance 
                     <li class="nav-item">
                         <a class="nav-link" href="maintenance.php">
                             <span class="menu-title">Maintenance</span>
                         </a>
-                    </li>
+                    </li> -->
                 </ul>
             </nav>
 
