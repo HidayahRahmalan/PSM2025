@@ -9,9 +9,9 @@ if (!isset($_SESSION['staff_id'])) {
 }
 
 // Define database credentials
-$dbUser  = 'root';
-$dbName = 'hygieiahub';
-$backupDir = 'C:\xampp\htdocs\MyPHPSite\HygieiaHub\backup';
+$dbUser  = 'B032210369';
+$dbName = 'PSM_B032210369';
+$backupDir = '..\backup';
 
 // Handle backup request
 if (isset($_POST['Backup'])) {
