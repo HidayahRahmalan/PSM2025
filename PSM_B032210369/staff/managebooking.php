@@ -27,6 +27,7 @@ if (!isset($_SESSION['staff_id'])) {
 
     <!-- Spesified external -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- ADD THIS LINE -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
@@ -134,12 +135,12 @@ if (!isset($_SESSION['staff_id'])) {
                         </div>
                     </li>
 
-                    <!-- Maintenance 
+                    <!-- Maintenance -->
                     <li class="nav-item">
                         <a class="nav-link" href="maintenance.php">
                             <span class="menu-title">Maintenance</span>
                         </a>
-                    </li> -->
+                    </li>
                 </ul>
             </nav>
 
@@ -267,7 +268,7 @@ if (!isset($_SESSION['staff_id'])) {
                                                 if ($result->num_rows > 0) {
                                                     while ($row = $result->fetch_assoc()) {
                                                         error_log("Booking ID: " . $row['booking_id'] . " Cleaners: " . $row['cleaners']);
-                                                        
+
                                                         // Determine row class based on status
                                                         $rowClass = ($row['status'] == 'Attention') ? 'table-danger' : '';
 
@@ -788,14 +789,9 @@ if (!isset($_SESSION['staff_id'])) {
                     estimatedDuration: duration
                 }),
                 success: function(response) {
-                    if (typeof response !== 'int') {
-                        response = JSON.parse(response);
-                    }
                     console.log("Response from server:", response);
-                    console.log("Value of response.available:", response.available);
-                    console.log("Type of response.available:", typeof response.available);
+                    // jQuery automatically parses JSON, so use response directly
                     if (response.available > 0) {
-                        console.log("2. Response from server:", response);
                         loadAvailableCleaners(bookingId, date, time, duration);
                         $('#availabilityStatus').html('<span class="text-success">' + response.available + ' cleaners available</span>');
                     } else {
@@ -803,7 +799,8 @@ if (!isset($_SESSION['staff_id'])) {
                         $('#availabilityStatus').html('<span class="text-danger">No cleaners available for this timeslot</span>');
                     }
                 },
-                error: function() {
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
                     $('#availabilityStatus').html('<span class="text-danger">Error checking availability</span>');
                 }
             });
@@ -813,6 +810,7 @@ if (!isset($_SESSION['staff_id'])) {
             $.ajax({
                 url: 'dbconnection/getavailablecleaners.php',
                 type: 'POST',
+                dataType: 'json', // ← Add this to expect JSON
                 data: {
                     bookingId: bookingId,
                     date: date,
@@ -822,9 +820,8 @@ if (!isset($_SESSION['staff_id'])) {
                 },
                 success: function(response) {
                     console.log("Available Cleaners Response:", response);
-                    $('#NewCleaners').empty();
+                    // jQuery automatically parses JSON, so use response directly
                     if (response.cleaners && response.cleaners.length > 0) {
-                        // First pass: add all available cleaners
                         response.cleaners.forEach(function(cleaner) {
                             var option = new Option(
                                 cleaner.name + (cleaner.is_current ? ' (currently assigned)' : ''),
@@ -835,22 +832,23 @@ if (!isset($_SESSION['staff_id'])) {
                             $('#NewCleaners').append(option);
                         });
 
+
                         // Get the IDs of currently assigned cleaners
                         var currentCleanerIds = response.cleaners.filter(c => c.is_current).map(c => c.staff_id);
+
 
                         // Set the selected values
                         $('#NewCleaners').val(currentCleanerIds).trigger('change');
                         $('#NewCleaners').prop('disabled', false);
 
+
                         // Update availability status
                         var availableCount = response.cleaners.length;
                         $('#availabilityStatus').html('<span class="text-success">' + availableCount + ' cleaner' + (availableCount !== 1 ? 's' : '') + ' available</span>');
-                    } else {
-                        $('#NewCleaners').prop('disabled', true);
-                        $('#availabilityStatus').html('<span class="text-danger">No available cleaners found</span>');
                     }
                 },
-                error: function() {
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
                     $('#availabilityStatus').html('<span class="text-danger">Error loading cleaners</span>');
                 }
             });

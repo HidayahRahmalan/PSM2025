@@ -520,6 +520,13 @@ while ($row = $result->fetch_assoc()) {
             try {
                 const totalDuration = calculateTotalDuration();
                 const response = await checkAvailability(date, time, city, totalDuration);
+
+                // Handle error response
+                if (!response.success) {
+                    select.innerHTML = '<option value="" disabled selected>Error: ' + response.error + '</option>';
+                    return;
+                }
+
                 const availableCleaners = response.available;
                 select.innerHTML = '<option value="" disabled selected>Select cleaners</option>';
 
@@ -529,7 +536,7 @@ while ($row = $result->fetch_assoc()) {
                     return;
                 }
 
-                // Case 2: Cleaners available - just show options 1 through available cleaners
+                // Case 2: Cleaners available
                 select.disabled = false;
                 for (let i = 1; i <= availableCleaners; i++) {
                     const option = document.createElement('option');
@@ -539,25 +546,49 @@ while ($row = $result->fetch_assoc()) {
                 }
             } catch (error) {
                 console.error('Error checking availability:', error);
-                select.innerHTML = '<option value="" disabled selected>Error checking availability</option>'
+                select.innerHTML = '<option value="" disabled selected>Error checking availability</option>';
             }
         }
 
         // Check cleaner availability
         async function checkAvailability(date, time, city, estimatedDuration) {
-            const response = await fetch('dbconnection/checkavailability.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    date,
-                    time,
-                    city,
-                    estimatedDuration
-                })
-            });
-            return response.json();
+            try {
+                const response = await fetch('dbconnection/checkavailability.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        date,
+                        time,
+                        city,
+                        estimatedDuration
+                    })
+                });
+
+                // First check if response is OK
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // Try to parse as JSON
+                const data = await response.json();
+
+                // Check if the response indicates success
+                if (!data.success) {
+                    throw new Error(data.error || 'Unknown server error');
+                }
+
+                return data;
+            } catch (error) {
+                console.error('Error checking availability:', error);
+                // Return a safe default instead of throwing
+                return {
+                    success: false,
+                    available: 0,
+                    error: error.message
+                };
+            }
         }
 
         // Handle date selection
