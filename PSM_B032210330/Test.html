@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Food Preferences - NutriEats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            background-color: #212226;
+            padding: 0 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo {
+            max-height: 60px; /* Adjust logo size */
+            display: block;
+        }
+
+        .site-title {
+            color: #b8860b; /* Darker gold color */
+            font-size: 30px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Main Content Styles */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h5 {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #b8860b;
+        }
+
+        button {
+            background-color: #b8860b; /* Darker gold color */
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        button:hover {
+            background-color: #daaa20;
+        }
+
+        /* Textarea Styles */
+        textarea {
+            width: 100%; /* Make textarea full width */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.3s ease;
+            resize: vertical; /* Allow vertical resizing */
+        }
+
+        textarea:focus {
+            border-color: #b8860b;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="index.html" class="logo-container" aria-label="NutriEats Home">
+            <img src="NutriEats.png" alt="NutriEats Logo" class="logo" />
+            <span class="site-title">NutriEats</span>
+        </a>
+        <nav class="nav-links">
+            <a href="MyRecipe.html">My Recipes</a>
+            <a href="MealPlan.html">Meal Plan</a>
+            <a href="Groceries.html">Groceries</a>
+            <a href="Profile.html">Profile</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Food Preferences</h2>
+        <h5>In order to enhance user experience, please input your dietary restrictions and preferences</h5>
+        <form id="preferencesForm" novalidate>
+            <label>Do you have any food preferences?</label>
+            <label><input type="radio" name="foodPreferences" value="yes" onclick="togglePreferences(true)"> Yes</label>
+            <label><input type="radio" name="foodPreferences" value="no" onclick="togglePreferences(false)"> No</label>
+            <textarea id="preferences" placeholder="List your food preferences (e.g: Protein, Low Fat, High Carbs)" style="display:none;"></textarea>
+
+            <label>Do you have any dietary diseases?</label>
+            <label><input type="radio" name="dietaryDiseases" value="yes" onclick="toggleDiseases(true)"> Yes</label>
+            <label><input type="radio" name="dietaryDiseases" value="no" onclick="toggleDiseases(false)"> No</label>
+            <textarea id="diseases" placeholder="List your dietary diseases (e.g: Obesity, Cardiovascular Disease, Diabetes)" style="display:none;"></textarea>
+
+            <label>Do you have any dietary restrictions?</label>
+            <label><input type="radio" name="dietaryRestrictions" value="yes" onclick="toggleRestrictions(true)"> Yes</label>
+            <label><input type="radio" name="dietaryRestrictions" value="no" onclick="toggleRestrictions(false)"> No</label>
+            <textarea id="restrictions" placeholder="List your dietary restrictions (e.g.: Vegan, Keto)" style="display:none;"></textarea>
+
+            <label>Do you have any allergies?</label>
+            <label><input type="radio" name="allergies" value="yes" onclick="toggleAllergies(true)"> Yes</label>
+            <label><input type="radio" name="allergies" value="no" onclick="toggleAllergies(false)"> No</label>
+            <textarea id="allergies" placeholder="List your allergies (e.g.: Dairy, Nuts, Seafood)" style="display:none;"></textarea>
+
+            <div class="error-message" id="errorMessage">Preferences should not be included in restrictions or allergies.</div>
+
+            <button type="submit">Submit Preferences</button>
+        </form>
+    </main>
+
+    <script>
+        function togglePreferences(show) {
+            document.getElementById('preferences').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleDiseases(show) {
+            document.getElementById('diseases').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleRestrictions(show) {
+            document.getElementById('restrictions').style.display = show ? 'block' : 'none';
+        }
+
+        function toggleAllergies(show) {
+            document.getElementById('allergies').style.display = show ? 'block' : 'none';
+        }
+
+        document.getElementById('preferencesForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Check if all questions are answered
+            const foodPreferencesAnswered = document.querySelector('input[name="foodPreferences"]:checked');
+            const dietaryDiseasesAnswered = document.querySelector('input[name="dietaryDiseases"]:checked');
+            const dietaryRestrictionsAnswered = document.querySelector('input[name="dietaryRestrictions"]:checked');
+            const allergiesAnswered = document.querySelector('input[name="allergies"]:checked');
+
+            if (!foodPreferencesAnswered || !dietaryDiseasesAnswered || !dietaryRestrictionsAnswered || !allergiesAnswered) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            const preferences = document.getElementById('preferences').value.toLowerCase().split(',').map(item => item.trim());
+            const diseases = document.getElementById('diseases').value.toLowerCase().split(',').map(item => item.trim());
+            const restrictions = document.getElementById('restrictions').value.toLowerCase().split(',').map(item => item.trim());
+            const allergies = document.getElementById('allergies').value.toLowerCase().split(',').map(item => item.trim());
+
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.style.display = 'none';
+
+            // Check for overlaps
+            const hasOverlap = preferences.some(pref => restrictions.includes(pref) || allergies.includes(pref));
+
+            if (hasOverlap) {
+                errorMessage.style.display = 'block';
+            } else {
+                // Proceed with form submission (e.g., save preferences)
+                alert('Preferences submitted successfully!');
+                // Redirect or perform further actions here
+            }
+        });
+    </script>
+</body>
+</html>
