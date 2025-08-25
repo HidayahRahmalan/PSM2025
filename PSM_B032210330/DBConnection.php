@@ -8,10 +8,12 @@ class DBConnection {
 
     private function connect() {
         // Database configuration
+
+$conn = new mysqli($host, $user, $pass, $dbname);
         $host = 'localhost'; // Database host
-        $username = 'root'; // Database username (default is 'root' for XAMPP)
-        $password = ''; // Database password (default is empty for XAMPP)
-        $database = 'newnutrieats'; // Database name
+        $username = 'nutrieats'; // Database username 
+        $password = 'nutrieats123'; // Database password 
+        $database = 'nutrieats'; // Database name
 
         // Create connection
         $this->conn = new mysqli($host, $username, $password, $database);
