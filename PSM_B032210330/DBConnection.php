@@ -11,9 +11,9 @@ class DBConnection {
 
 $conn = new mysqli($host, $user, $pass, $dbname);
         $host = 'localhost'; // Database host
-        $username = 'nutrieats'; // Database username 
-        $password = 'nutrieats123'; // Database password 
-        $database = 'nutrieats'; // Database name
+        $username = 'PSM_B032210330'; // Database username 
+        $password = 'nutrieats1'; // Database password 
+        $database = 'PSM_B032210330'; // Database name
 
         // Create connection
         $this->conn = new mysqli($host, $username, $password, $database);
