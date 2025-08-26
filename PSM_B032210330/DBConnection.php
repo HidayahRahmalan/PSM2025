@@ -1,38 +1,16 @@
 <?php
-class DBConnection {
-    private $conn;
+$servername = "localhost";
+$username = "PSM_B032210330";
+$password = "nutrieats1";
+$dbname = "PSM_B032210330";
 
-    public function __construct() {
-        $this->connect();
-    }
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    private function connect() {
-        // Database configuration
-
-$conn = new mysqli($host, $user, $pass, $dbname);
-        $host = 'localhost'; // Database host
-        $username = 'PSM_B032210330'; // Database username 
-        $password = 'nutrieats1'; // Database password 
-        $database = 'PSM_B032210330'; // Database name
-
-        // Create connection
-        $this->conn = new mysqli($host, $username, $password, $database);
-
-        // Check connection
-        if ($this->conn->connect_error) {
-            die("Connection failed: " . $this->conn->connect_error);
-        }
-    }
-
-    public function getConnection() {
-        return $this->conn;
-    }
-
-    public function closeConnection() {
-        if ($this->conn) {
-            $this->conn->close();
-        }
-    }
-}
-
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} /*else {
+    echo "Database connection successful!";
+} */
 ?>
