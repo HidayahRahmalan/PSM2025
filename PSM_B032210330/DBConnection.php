@@ -1,16 +1,36 @@
 <?php
-$servername = "localhost";
-$username = "PSM_B032210330";
-$password = "nutrieats1";
-$dbname = "PSM_B032210330";
+class DBConnection {
+    private $conn;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+    public function __construct() {
+        $this->connect();
+    }
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} /*else {
-    echo "Database connection successful!";
-} */
+    private function connect() {
+        // Database configuration
+        $host = 'localhost'; // Database host
+        $username = 'PSM_B032210330'; // Database username (default is 'root' for XAMPP)
+        $password = 'nutrieats1'; // Database password (default is empty for XAMPP)
+        $database = 'PSM_B032210330'; // Database name
+
+        // Create connection
+        $this->conn = new mysqli($host, $username, $password, $database);
+
+        // Check connection
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+        }
+    }
+
+    public function getConnection() {
+        return $this->conn;
+    }
+
+    public function closeConnection() {
+        if ($this->conn) {
+            $this->conn->close();
+        }
+    }
+}
+
 ?>
