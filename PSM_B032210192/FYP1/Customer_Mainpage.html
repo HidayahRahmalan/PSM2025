@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RY's Tasty Creation - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffe6e6;
+    }
+    header {
+      background-color: #4b1c1c;
+      color: white;
+      padding: 15px 30px;
+    }
+    .navbar-brand {
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 60px 30px;
+      background-color: #f8d7da;
+    }
+    .hero h1 {
+      font-size: 48px;
+    }
+    .section {
+      padding: 40px 30px;
+    }
+    footer {
+      background-color: #4b1c1c;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="navbar-brand text-white">RY's Tasty Creation</div>
+      <form class="d-flex w-50">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+      <div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            My Account
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="login.html">Login</a></li>
+            <li><a class="dropdown-item" href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div class="btn-group ms-3">
+          <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            My Basket
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" id="basket-dropdown">
+            <li><span class="dropdown-item">No items in basket</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>Welcome to RY's Tasty Creation</h1>
+    <p>Your go-to hub for delicious hot & frozen homemade food!</p>
+    <a href="product.html" class="btn btn-success btn-lg mt-3">ORDER NOW</a>
+  </div>
+
+  <div class="section bg-white text-center">
+    <h2>About Us</h2>
+    <p>At RY’s Tasty Creation, we are passionate about delivering high-quality, homemade food prepared with love. Whether you're craving curry puffs, traditional kuih, or hearty burgers — we’ve got you covered!</p>
+  </div>
+
+  <footer>
+    &copy; 2025 RY's Tasty Creation. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Example: Load dummy basket items (you can replace with real items from storage or database)
+    const basket = [
+      { name: "Curry Puff", qty: 2 },
+      { name: "Frozen Burger", qty: 1 }
+    ];
+
+    function renderBasket() {
+      const basketDropdown = document.getElementById('basket-dropdown');
+      basketDropdown.innerHTML = "";
+
+      if (basket.length === 0) {
+        basketDropdown.innerHTML = '<li><span class="dropdown-item">No items in basket</span></li>';
+      } else {
+        basket.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="dropdown-item">${item.qty} x ${item.name}</span>`;
+          basketDropdown.appendChild(li);
+        });
+      }
+    }
+
+    renderBasket();
+  </script>
+</body>
+</html>

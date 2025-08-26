@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Basket</title>
+</head>
+<body>
+  <h1>My Basket</h1>
+  <ul id="basketList"></ul>
+
+  <script>
+    const basket = JSON.parse(localStorage.getItem('basket')) || [];
+    const list = document.getElementById('basketList');
+
+    basket.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = `${item.name} - Quantity: ${item.qty}`;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

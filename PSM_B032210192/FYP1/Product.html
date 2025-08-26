@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Business</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background-color: pink;
+    }
+
+    header {
+      background-color: #4b1c1c;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 30px;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      width: 300px;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+
+    .breadcrumb {
+      margin: 20px 30px;
+      color: white;
+    }
+
+    .container {
+      padding: 0 30px;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    .desc {
+      margin-bottom: 20px;
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #4b1c1c;
+      color: white;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .add-to-basket {
+      display: block;
+      background-color: #fff;
+      color: #4b1c1c;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><strong>RY's Tasty Creation</strong></div>
+    <div class="search-box">
+      <input type="text" placeholder="Search ingredients, cookware...">
+    </div>
+    <nav>
+      <a href="account.html">My Account</a>
+      <a href="index.html">My Basket</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumb">Home / Products </div>
+
+  <div class="container">
+    <h1>PRODUCT</h1>
+    <p class="desc">Find your hot & frozen food —right here!</p>
+    
+    <div class="grid">
+      <div class="card">
+        <img src="Karipap Ayam.jpg" alt="karipap ayam">
+        <div class="card-title">Chicken CurryPuff</div>
+        <button class="add-to-basket" onclick="addToBasket('Chicken CurryPuff')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="karipap.webp" alt="karipap kentang">
+        <div class="card-title">Potato Curry Puff</div>
+        <button class="add-to-basket" onclick="addToBasket('Potato Curry Puff')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="keria.jpeg" alt="Keria">
+        <div class="card-title">Keria</div>
+        <button class="add-to-basket" onclick="addToBasket('Keria')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="ketayap.jpeg" alt="ketayap">
+        <div class="card-title">Ketayap</div>
+        <button class="add-to-basket" onclick="addToBasket('Ketayap')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="malaysian burger.jpeg" alt="malaysian burger">
+        <div class="card-title">Malaysian Burger</div>
+        <button class="add-to-basket" onclick="addToBasket('Malaysian Burger')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="kasturi.jpeg" alt="Kasturi">
+        <div class="card-title">Kasturu</div>
+        <button class="add-to-basket" onclick="addToBasket('Kasturi')">Add to Basket</button>
+      </div>
+      <div class="card">
+        <img src="donut.jpeg" alt="donut">
+        <div class="card-title">Donut</div>
+        <button class="add-to-basket" onclick="addToBasket('Donut')">Add to Basket</button>
+      </div>
+      <!-- Add more cards as needed -->
+    </div>
+  </div>
+
+  <script>
+    function addToBasket(productName) {
+      // Get existing basket from localStorage, or initialize an empty array if not found
+      let basket = JSON.parse(localStorage.getItem('basket')) || [];
+
+      // Check if the product is already in the basket, if it is, increase the quantity
+      const existingProduct = basket.find(item => item.name === productName);
+      if (existingProduct) {
+        existingProduct.qty += 1;
+      } else {
+        // If the product is not in the basket, add it with a quantity of 1
+        basket.push({ name: productName, qty: 1 });
+      }
+
+      // Save the updated basket to localStorage
+      localStorage.setItem('basket', JSON.stringify(basket));
+      alert(productName + ' added to basket!');
+    }
+  </script>
+
+</body>
+</html>
