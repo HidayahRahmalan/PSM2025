@@ -1,0 +1,332 @@
+/* Custom Styles for PS4 Rental System */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.bg-purple {
+    background-color: #6f42c1 !important;
+    color: #fff !important;
+}
+
+.btn-purple {
+    background-color: #6f42c1 !important;
+    color: #fff !important;
+    border: none;
+}
+
+.text-purple {
+    color: #6f42c1 !important;
+}
+.btn-purple:hover, .btn-purple:focus {
+    background-color: #5936a9 !important;
+    color: #fff !important;
+}
+
+.navbar.bg-purple .navbar-brand,
+.navbar.bg-purple .nav-link {
+    color: #fff !important;
+}
+
+.navbar.bg-purple .nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+footer.bg-purple {
+    background-color: #6f42c1 !important;
+    color: #fff;
+}
+
+.hero-section {
+    background-color: #6f42c1 !important;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section .lead {
+    font-size: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.game-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+}
+
+/* Modern card and hero section styles */
+.card, .hero-section {
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(80, 0, 120, 0.08), 0 1.5px 4px rgba(80,0,120,0.04);
+}
+
+.btn, .btn-purple {
+    border-radius: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(80,0,120,0.08);
+}
+
+.btn-purple:hover, .btn-purple:focus {
+    background: linear-gradient(90deg, #6f42c1 60%, #a084e8 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(80,0,120,0.16);
+}
+
+.hero-section {
+    background: linear-gradient(120deg, #6f42c1 60%, #a084e8 100%);
+    color: #fff;
+    padding: 80px 0 60px 0;
+    margin-bottom: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(80,0,120,0.12);
+}
+
+.table-striped > tbody > tr:hover {
+    background-color: #f3e8ff;
+    transition: background 0.2s;
+}
+
+.card-header {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.quick-actions .btn {
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* White button with purple border and text for use on purple backgrounds */
+.btn-outline-purple {
+    background: #fff !important;
+    color: #6f42c1 !important;
+    border: 2px solid #6f42c1 !important;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.btn-outline-purple:hover, .btn-outline-purple:focus {
+    background: #a084e8 !important;
+    color: #fff !important;
+    border-color: #6f42c1 !important;
+    box-shadow: 0 4px 16px rgba(80,0,120,0.16);
+}
+
+/* Consistent featured game card media */
+.game-card img,
+.game-card .game-trailer {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.75rem 0.75rem 0 0;
+    background: #222;
+}
+
+@media (max-width: 767px) {
+    .game-card img,
+    .game-card .game-trailer {
+        height: 140px;
+    }
+}
+
+/* Steam-style sliding overlay for featured games */
+.steam-featured-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+.steam-featured-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    background: #181a20;
+    width: 320px;
+    height: 420px;
+    margin-right: 2rem;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    display: inline-block;
+    vertical-align: top;
+}
+.steam-featured-img,
+.steam-featured-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #181a20;
+    display: block;
+    border-radius: 1.2rem;
+    transition: filter 0.3s, opacity 0.3s;
+}
+.steam-featured-card .steam-featured-overlay {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(20,20,30,0.98);
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 24px 16px 16px 16px;
+}
+.steam-featured-card.active .steam-featured-overlay,
+.steam-featured-card:hover .steam-featured-overlay {
+    transform: translateY(0);
+}
+.steam-featured-card:hover img {
+    filter: blur(2px) brightness(0.7);
+}
+.steam-featured-overlay-video {
+    width: 100%;
+    max-height: 180px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    background: #000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.steam-featured-details {
+    width: 100%;
+    text-align: left;
+    background: none;
+    color: #fff;
+    padding: 0;
+    border-radius: 0;
+    min-height: unset;
+    position: static;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.steam-featured-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.steam-featured-tags {
+    margin-bottom: 10px;
+}
+.steam-featured-tags .badge {
+    display: inline-block;
+    background: #fff;
+    color: #222;
+    border-radius: 16px;
+    padding: 4px 14px;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.steam-featured-desc {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+    color: #e0e0e0;
+}
+@media (max-width: 767px) {
+    .steam-featured-card img {
+        height: 180px;
+    }
+    .steam-featured-overlay-video {
+        max-height: 100px;
+    }
+    .steam-featured-card {
+        min-width: 90vw;
+        max-width: 95vw;
+    }
+}
+
+.featured-title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(90deg, #6f42c1 30%, #a084e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+.featured-title::after {
+    content: '';
+    display: block;
+    margin: 0.5rem auto 0 auto;
+    width: 60px;
+    height: 5px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #6f42c1 30%, #a084e8 100%);
+    opacity: 0.7;
+}
+
+/* Modern game selection styles */
+.game-select-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    z-index: 2;
+    cursor: pointer;
+    appearance: none;
+    background: #fff;
+    border: 2px solid #a084e8;
+    border-radius: 50%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(80,0,120,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.game-select-checkbox:checked {
+    border-color: #6f42c1;
+    background: #6f42c1;
+}
+.game-select-checkbox:checked::after {
+    content: '\2714';
+    color: #fff;
+    font-size: 1.3rem;
+    display: block;
+    text-align: center;
+    line-height: 28px;
+}
+.game-select-checkbox::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.game-select-card.selected {
+    border: 2.5px solid #6f42c1;
+    box-shadow: 0 0 0 4px #a084e833;
+    transition: border-color 0.2s, box-shadow 0.2s;
+} 
