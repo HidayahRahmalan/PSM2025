@@ -1,6 +1,6 @@
 <?php
 // Database connection settings
-$host = 'bitp3353.utem.edu.my'; // UTeM MySQL server, 
+$host = 'localhost'; // UTeM MySQL server, 
 $db   = 'psm_B032210098';       
 $user = 'B032210098';
 $pass = 'ps4dbutem';
