@@ -4,7 +4,7 @@ $host = 'localhost'; // UTeM MySQL server,
 $db   = 'psm_B032210098';       
 $user = 'B032210098';
 $pass = 'ps4dbutem';
-$charset = 'utf8mb4';
+$charset = 'utf8';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
