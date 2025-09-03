@@ -1,10 +1,10 @@
 <?php
 // Database connection settings
 $host = 'localhost'; // UTeM MySQL server, 
-$db   = 'psm_B032210098';       
+$db   = 'psm_b032210098';       
 $user = 'B032210098';
 $pass = 'ps4dbutem';
-$charset = 'utf8';
+$charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
