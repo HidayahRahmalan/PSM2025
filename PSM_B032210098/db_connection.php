@@ -1,7 +1,7 @@
 <?php
 // Database connection settings
-$host = 'localhost';
-$db   = 'PSM_B032210098';
+$host = 'bitp3353.utem.edu.my'; // UTeM MySQL server, 
+$db   = 'psm_B032210098';       
 $user = 'B032210098';
 $pass = 'ps4dbutem';
 $charset = 'utf8mb4';
@@ -15,8 +15,8 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
+    echo "Connected successfully!";
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
-?> 
-
+?>
