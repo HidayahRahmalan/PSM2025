@@ -15,8 +15,9 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
-    echo "Connected successfully!";
-} catch (PDOException $e) {
+    // Force UTF-8 everywhere
+    $pdo->exec("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
+} catch (\PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 }
 ?>
